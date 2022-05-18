@@ -32,11 +32,36 @@ const morgan = require('morgan');
 const cors = require('cors');
 
 function configExpress(app) {
-  app.use(corse());
+  app.use(cors());
   app.use(express.json());
   app.use(morgan('dev'));
 }
 
 module.exports = configExpress;
+
+```
+
+# Data base configuration
+npm i mongoose
+
+Final ./config/database.js configuration
+```
+require('dotenv').config();
+const mongoose = require('mongoose');
+
+const URI = process.env.MONGO_DB_URI;
+
+async function connectDB() {
+  try {
+    console.log(URI);
+    await mongoose.connect(URI);
+    console.log('Mongoo DB is connected')
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+}
+
+module.exports = connectDB;
 
 ```
