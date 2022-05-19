@@ -1,11 +1,17 @@
 const UsersModel = require("./users.model");
 
 async function createUser(newUser) {
-  try {
-    const user = await UsersModel.create(newUser);
-    return user;
-  } catch (error) {
+  const { password } = newUser;
+  if(password.length < 6 ){
+    console.log('Password require more than six characters');
     throw new Error(error);
+  } else {
+    try {
+      const user = await UsersModel.create(newUser);
+      return user;
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 }
 
