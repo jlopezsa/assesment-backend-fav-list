@@ -9,6 +9,8 @@ npm i morgan
 
 npm i cors
 
+npm i -D nodemon
+
 Final index.js configuration:
 
 ```

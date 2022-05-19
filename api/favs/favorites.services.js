@@ -1,7 +1,9 @@
-const FavoritesModel = require('./favorites.model');
+const FavsModel = require('./favorites.model');
 
 function getAllListFavs() {
-  return FavoritesModel.find();
+  const response = FavsModel.find();
+  console.log('SERVICE: ', response);
+  return response;
 }
 
 module.exports = {
