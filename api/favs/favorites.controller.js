@@ -1,6 +1,7 @@
 const {
   createListFavs,
   getAllListFavs,
+  getOneListFavs,
 } = require('./favorites.services');
 
 async function handlerCreateListFavs(req, res) {
@@ -24,7 +25,18 @@ async function handlerGetAllListFavs(req, res) {
   }
 }
 
+async function handlerGetOneListFavs(req, res) {
+  const { id } = req.params;
+  try {
+    const listFavs = await getOneListFavs(id);
+    res.status(201).json(listFavs);
+  } catch (error) {
+    res.status(500).json({ messae: `Favorites list is not found` });
+  }
+}
+
 module.exports = {
   handlerCreateListFavs,
   handlerGetAllListFavs,
+  handlerGetOneListFavs,
 }

@@ -15,7 +15,17 @@ function getAllListFavs() {
   return response;
 }
 
+async function getOneListFavs(id) {
+  try {
+    const listFavs = await FavsModel.findById(id);
+    return listFavs;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
 module.exports = {
   createListFavs,
   getAllListFavs,
+  getOneListFavs,
 };
