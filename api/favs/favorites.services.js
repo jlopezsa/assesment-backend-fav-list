@@ -1,4 +1,4 @@
-const FavsModel = require('./favorites.model');
+const FavsModel = require("./favorites.model");
 
 async function createListFavs(newListFavs) {
   try {
@@ -11,21 +11,30 @@ async function createListFavs(newListFavs) {
 
 function getAllListFavs() {
   const response = FavsModel.find();
-  console.log('SERVICE: ', response);
+  console.log("SERVICE: ", response);
   return response;
 }
 
 async function getOneListFavs(id) {
-  try {
-    const listFavs = await FavsModel.findById(id);
-    return listFavs;
-  } catch (error) {
-    throw new Error(error);
+
+  const listFavs = await FavsModel.findById(id);
+  if(!listFavs){
+    return null;
   }
+  return listFavs;
+}
+
+async function deleteOneListFavs(id) {
+  const listFavs = await FavsModel.findByIdAndDelete(id);
+  if(!listFavs) {
+    return null;
+  }
+  return listFavs;
 }
 
 module.exports = {
   createListFavs,
   getAllListFavs,
   getOneListFavs,
+  deleteOneListFavs,
 };
