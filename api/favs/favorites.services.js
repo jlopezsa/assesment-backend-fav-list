@@ -11,12 +11,10 @@ async function createListFavs(newListFavs) {
 
 function getAllListFavs() {
   const response = FavsModel.find();
-  console.log("SERVICE: ", response);
   return response;
 }
 
 async function getOneListFavs(id) {
-
   const listFavs = await FavsModel.findById(id);
   if(!listFavs){
     return null;
