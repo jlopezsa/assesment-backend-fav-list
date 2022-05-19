@@ -11,6 +11,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/jlopezsa/assesment-backend-fav-list/issues"
   },
-  "homepage": "https://github.com/jlopezsa/assesment-backend-fav-list#readme"
+  "homepage": "https://github.com/jlopezsa/assesment-backend-fav-list#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
 }
