@@ -36,9 +36,21 @@ async function deleteOneUser(id) {
   return user;
 }
 
+async function getUserByEmail(email) {
+  const user = await UsersModel.findOne({ email });
+  return user;
+}
+
+async function findOneUser(query) {
+  const user = await UsersModel.findOne(query);
+  return user;
+}
+
 module.exports = {
   createUser,
   getAllUsers,
   getOneUser,
   deleteOneUser,
+  getUserByEmail,
+  findOneUser,
 };
