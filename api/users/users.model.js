@@ -4,27 +4,27 @@ const bcrypt = require('bcrypt');
 const UsersSchema = new mongoose.Schema({
   email: {
     type: String,
-    required: true,
+    required: [true, "Email is a required field"],
     trim: true,
     lowercase: true,
     unique: true,
   },
   firstName: {
     type: String,
-    // required: true,
     trim: true,
     uppercase: true,
   },
   lastName: {
     type: String,
-    // required: true,
     trim: true,
     lowercase: true,
   },
   password: {
     type: String,
-    required: true,
     trim: true,
+    required: [true, "Password is a required field"],
+    minlength: [8, "Password length is less than 8 characters, try again!"],
+    select: false,
   },
   passwordResetToken: String,
   passwordResetExpires: Date,
@@ -68,5 +68,4 @@ UsersSchema.virtual('profile').get(function () {
 });
 
 const Users = mongoose.model('Users', UsersSchema)
-
 module.exports = Users;

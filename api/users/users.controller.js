@@ -18,7 +18,7 @@ async function handlerCreateUser(req, res) {
     const user = await createUser(newUser);
     res.status(201).json(user);
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json(error.message);
   }
 }
 
@@ -35,7 +35,7 @@ async function handlerGetOneUser(req, res) {
   const { id } = req.params;
   const user = await getOneUser(id);
   if(!user){
-    res.status(500).json({ messae: `User is not found` });
+    res.status(500).json({ message: `User is not found` });
   }
   res.status(201).json(user);
 }
