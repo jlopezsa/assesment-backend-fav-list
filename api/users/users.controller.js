@@ -46,7 +46,7 @@ async function handlerDeleteOneUser(req, res) {
   if(!response) {
     res.status(500).json({ message: `User in not found` });
   }
-  res.status(201).json({ message: `User is deleted` });
+  res.status(201).json({ message: `User was deleted` });
 }
 
 module.exports = {

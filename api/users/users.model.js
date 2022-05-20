@@ -24,7 +24,6 @@ const UsersSchema = new mongoose.Schema({
     trim: true,
     required: [true, "Password is a required field"],
     minlength: [8, "Password length is less than 8 characters, try again!"],
-    select: false,
   },
   passwordResetToken: String,
   passwordResetExpires: Date,
@@ -51,7 +50,6 @@ UsersSchema.pre('save', async function (next) {
 
 UsersSchema.methods.comparePassword = async function (candidatePassword) {
   const user = this;
-
   return bcrypt.compare(candidatePassword, user.password);
 };
 
