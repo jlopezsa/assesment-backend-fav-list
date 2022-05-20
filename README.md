@@ -28,7 +28,7 @@ The mission consists of two parts: first you will have to build a RestFul api an
 3. Ejecutar `npm run dev` para levantar el servidor
 
 # Verificación del funcoinamiento de los endpoints
-## Para verificar los endpoints, en el siguiente link se presentan los ensayos realizados [Link POSTMAN Here](https://documenter.getpostman.com/view/20060717/Uyxohj6n#d73814d4-1f07-4520-a8bb-df680415eea6).
+## Para verificar los endpoints, en el siguiente link se presentan los ensayos realizados [Link POSTMAN Here](https://documenter.getpostman.com/view/20060717/Uyxohj6n).
 
 
 # Install dependencies
