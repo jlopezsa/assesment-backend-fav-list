@@ -44,7 +44,7 @@ async function handlerDeleteOneUser(req, res) {
   const { id } = req.params;
   const response = await deleteOneUser(id);
   if(!response) {
-    res.status(500).json({ message: `User in not found` });
+    res.status(500).json({ message: `User is not found` });
   }
   res.status(201).json({ message: `User was deleted` });
 }

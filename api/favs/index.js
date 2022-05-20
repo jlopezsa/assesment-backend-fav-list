@@ -3,8 +3,8 @@ const {
   handlerCreateListFavs,
   handlerGetAllListFavs,
   handlerGetOneListFavs,
-  handlerDeleteOneListFavs,
   handlerUpdateListFavs,
+  handlerDeleteOneListFavs,
 } = require('./favorites.controller');
 
 const router = Router();
