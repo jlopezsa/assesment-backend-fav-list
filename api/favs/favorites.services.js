@@ -22,6 +22,12 @@ async function getOneListFavs(id) {
   return listFavs;
 }
 
+async function updateOneListFavs(id, newItem) {
+  const updateList = await FavsModel.findByIdAndUpdate(id, {$push: newItem}, { new: true });
+  console.log('UPDATE: ', updateList);
+  return updateList;
+}
+
 async function deleteOneListFavs(id) {
   const listFavs = await FavsModel.findByIdAndDelete(id);
   if(!listFavs) {
@@ -34,5 +40,6 @@ module.exports = {
   createListFavs,
   getAllListFavs,
   getOneListFavs,
+  updateOneListFavs,
   deleteOneListFavs,
 };

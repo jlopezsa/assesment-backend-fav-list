@@ -4,27 +4,26 @@ const bcrypt = require('bcrypt');
 const UsersSchema = new mongoose.Schema({
   email: {
     type: String,
-    required: true,
+    required: [true, "Email is a required field"],
     trim: true,
     lowercase: true,
     unique: true,
   },
   firstName: {
     type: String,
-    // required: true,
     trim: true,
     uppercase: true,
   },
   lastName: {
     type: String,
-    // required: true,
     trim: true,
     lowercase: true,
   },
   password: {
     type: String,
-    required: true,
     trim: true,
+    required: [true, "Password is a required field"],
+    minlength: [8, "Password length is less than 8 characters, try again!"],
   },
   passwordResetToken: String,
   passwordResetExpires: Date,
@@ -51,7 +50,6 @@ UsersSchema.pre('save', async function (next) {
 
 UsersSchema.methods.comparePassword = async function (candidatePassword) {
   const user = this;
-
   return bcrypt.compare(candidatePassword, user.password);
 };
 
@@ -68,5 +66,4 @@ UsersSchema.virtual('profile').get(function () {
 });
 
 const Users = mongoose.model('Users', UsersSchema)
-
 module.exports = Users;

@@ -18,7 +18,7 @@ async function handlerCreateUser(req, res) {
     const user = await createUser(newUser);
     res.status(201).json(user);
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json(error.message);
   }
 }
 
@@ -35,7 +35,7 @@ async function handlerGetOneUser(req, res) {
   const { id } = req.params;
   const user = await getOneUser(id);
   if(!user){
-    res.status(500).json({ messae: `User is not found` });
+    res.status(500).json({ message: `User is not found` });
   }
   res.status(201).json(user);
 }
@@ -44,9 +44,9 @@ async function handlerDeleteOneUser(req, res) {
   const { id } = req.params;
   const response = await deleteOneUser(id);
   if(!response) {
-    res.status(500).json({ message: `User in not found` });
+    res.status(500).json({ message: `User is not found` });
   }
-  res.status(201).json({ message: `User is deleted` });
+  res.status(201).json({ message: `User was deleted` });
 }
 
 module.exports = {

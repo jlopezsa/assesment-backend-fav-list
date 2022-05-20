@@ -2,6 +2,7 @@ const {
   createListFavs,
   getAllListFavs,
   getOneListFavs,
+  updateOneListFavs,
   deleteOneListFavs,
 } = require("./favorites.services");
 
@@ -33,6 +34,16 @@ async function handlerGetOneListFavs(req, res) {
   res.status(201).json(listFavs);
 }
 
+async function handlerUpdateListFavs(req, res) {
+  const { id } = req.params;
+  const newItem = req.body;
+  const updateList = await updateOneListFavs(id, newItem);
+  if(!updateList){
+    res.status(400).json({ messae: `Favorites list is not found` });
+  }
+  res.status(201).json(updateList);
+}
+
 async function handlerDeleteOneListFavs(req, res) {
   const { id } = req.params;
   const response = await deleteOneListFavs(id);
@@ -46,5 +57,6 @@ module.exports = {
   handlerCreateListFavs,
   handlerGetAllListFavs,
   handlerGetOneListFavs,
+  handlerUpdateListFavs,
   handlerDeleteOneListFavs,
 };

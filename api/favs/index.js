@@ -3,14 +3,18 @@ const {
   handlerCreateListFavs,
   handlerGetAllListFavs,
   handlerGetOneListFavs,
+  handlerUpdateListFavs,
   handlerDeleteOneListFavs,
 } = require('./favorites.controller');
 
 const router = Router();
 
-router.post('/', handlerCreateListFavs);
-router.get('/', handlerGetAllListFavs);
-router.get('/:id', handlerGetOneListFavs);
-router.delete('/:id', handlerDeleteOneListFavs);
+const { isAuthenticated } = require('../../auth/auth.service');
+
+router.post('/', isAuthenticated(), handlerCreateListFavs);
+router.get('/', isAuthenticated(), handlerGetAllListFavs);
+router.get('/:id', isAuthenticated(), handlerGetOneListFavs);
+router.patch('/:id', isAuthenticated(), handlerUpdateListFavs)
+router.delete('/:id', isAuthenticated(), handlerDeleteOneListFavs);
 
 module.exports = router;

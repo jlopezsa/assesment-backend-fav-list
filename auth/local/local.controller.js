@@ -3,7 +3,6 @@ const { signToken } = require('../auth.service');
 
 async function handlerLoginUser(req, res) {
   const { email, password } = req.body;
-
   try {
     const user = await getUserByEmail(email);
     if (!user) {

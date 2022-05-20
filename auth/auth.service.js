@@ -17,6 +17,7 @@ function isAuthenticated() {
     async (req, res, next) => {
       // 1. req.headers -> authorization
       const authHeader = req.headers.authorization;
+      console.log('FLAG-01: ', authHeader);
       // 2. If (authHeader)
       if (!authHeader) {
         return res.status(401).json({ message: 'User not authenticated' }).end();
