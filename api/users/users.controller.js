@@ -23,12 +23,8 @@ async function handlerCreateUser(req, res) {
 }
 
 async function handlerGetAllUsers(req, res) {
-  try {
     const users = await getAllUsers();
     res.status(201).json(users);
-  } catch (error) {
-    res.status(500).json(error);
-  }
 }
 
 async function handlerGetOneUser(req, res) {
